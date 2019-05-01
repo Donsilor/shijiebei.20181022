@@ -1,0 +1,43 @@
+.bk{width:100%;height:100%;background:url(../images/index_bg.jpg) no-repeat center top/cover;padding:40px 0 4.5rem;}
+
+.logo{position: absolute;left: 2.5%;top: 1rem;width: 18.4%;}
+
+.title{width:100%;height:auto;padding:0 2% 0;}
+.title img{width:100%;height:100%;}
+
+.title_2{width:90%;height:auto;margin:1rem auto;}
+.title_2 img{width:100%;height:100%;}
+
+
+
+.btns{position:relative;margin: 2rem 0;}
+.btns a{display:block;width:92.66%;font: 1rem/3.5 '';background: url("../images/btn_bg_1.png") no-repeat center/contain;text-align: center;margin: auto;color: #ce1100;}
+
+
+
+.rule{width:100%;height:auto;padding-bottom: 4rem;}
+.rule .r_title{width:53%;margin: auto;}
+.rule .r_title img{display: block;width:100%;}
+.rule .content{width:92%;height:auto;margin:1rem auto 0;padding:.8rem 2.5%;background:url(../images/rule_bg.png) no-repeat center/100% 100%;position:relative;}
+.rule .content:after{content:'';width:5rem;height:5rem;background:url(../images/football.png) no-repeat center/contain;position:absolute;right:-1rem;bottom:-3.5rem;}
+
+
+.rule .content > p{text-shadow:2px 2px 2px #11160c;font:1rem/1.6 'HS';color:#fff; padding:0.5rem;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

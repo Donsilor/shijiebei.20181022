@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>卡卡买世界杯竞猜-赚取积分</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/userCenter.css">
+    <link rel="stylesheet" href="css/userCenter.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+</head>
+<body>
+<div class="w">
+    <img src="images/logo.png" alt="" class="logo">
+
+    <div class="user">
+        <a href="javascript:$('#userAddress').show();">
+            <img id="userHeadImg"
+                 src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTL5beI6mWClkwPIX1WgsFOYgdY84QqVibLPdSkwVIO1j9gOrflnDxVkOE2YibDPdkFZImHeToZGddiaA/132"
+                 alt="">
+        </a>
+    </div>
+    <div class="userName">嬉笑不颜开</div>
+    <div class="integral"><span>积分 999</span></div>
+    <a href="javascript:" class="signIn" onclick="sign()">签到赚积分</a>
+    <div class="inviteLink">
+        <span>邀请链接</span>
+        <input type="text" id="agentUrl" value="https://www.baidu.com"/>
+    </div>
+    <div class="btnDiv clf">
+        <!--<a href="javascript:" class="fl">邀请赚积分</a>-->
+        <button class="btn fl" data-clipboard-target="#agentUrl">
+            邀请赚积分
+        </button>
+        <a href="share.html" class="fr">分享赚积分</a>
+    </div>
+    <div class="winningRecord">
+        <p class="title">中奖记录</p>
+        <ul class="clf" id="awardsList">
+            <!--<li>-->
+            <!--<a href="javascript:" onclick="showAwardsDetail(this);" class="a1"-->
+            <!--hasid="10233cda-f152-4972-b581-70ed629e9a97" isgoods="0"><img-->
+            <!--src="images/award_1.png" alt=""><span>小天才电话手表</span></a>-->
+            <!--<div class="pup" style="display:none;" objtype="awardsQuanDesc"-->
+            <!--hasid="10233cda-f152-4972-b581-70ed629e9a97">-->
+            <!--<div class="close" onclick="hideAwardsDetail()"><img src="images/close_1.png" alt=""></div>-->
+            <!--<p>一、领取码：<span id="codeText_0">B1523</span> <input class="yaoqingma" type="button" value="复制领取码"-->
+            <!--id="btnQuanma_0"-->
+            <!--data-clipboard-target="#codeText_0"><br>二、奖品说明：满20立减5元优惠卷<br>三、领取时限：6月28日-7月18日<br>四、领取方法<br>1、-->
+            <!--扫描下方二维码关注“久久丫会员服务号”<br>2、 点击下方“会员账户”→“个人中心”注册成为久久丫会员<br>3、-->
+            <!--返回公众号界面，点击“会员账户”→“个人中心”在优惠码兑换栏输入券码，兑换优惠券。<br>4、-->
+            <!--到店消费时告知店员您要使用会员优惠券，在店员引导下领取鸭脖一份。</p><img src="images/ewm.jpg?version=1.1.7" alt="">-->
+            <!--</div>-->
+            <!--</li>-->
+        </ul>
+    </div>
+    <div class="guessRecord" id="guessRecordList"><p class="title">世界杯竞猜记录</p>
+        <div class="list" id="gameRecords">
+            <!--</div>-->
+            <!--<div class="item">-->
+            <!--<div class="time">2018-6-8</div>-->
+            <!--<div class="result clf">-->
+            <!--<div class="state fl"><img src="images/logo_6.png?version=1.1.7" alt=""><span>伊朗</span></div>-->
+            <!--<div class="state fr"><img src="images/logo_8.png?version=1.1.7" alt=""><span>西班牙</span></div>-->
+            <!--</div>-->
+            <!--</div>-->
+        </div>
+    </div>
+    <div class="fixedMenu">
+        <div class="fixedMenu">
+            <a href="ss.html" class="icon_1">赛事竞猜</a>
+            <a href="userCenter.html" class="icon_4 active">赚取积分</a>
+            <a href="luckyDraw.html" class="icon_2 ">积分兑换</a>
+            <a href="ranking.html" class="icon_3">排行榜</a>
+        </div>
+    </div>
+</div>
+<div class="pop_ups " id="userAddress" style="display:none;">
+    <a href="javascript:$('#userAddress').hide();" id="close"><img src="images/close.png" alt=""></a>
+    <div style="text-Align:center">
+        <h6>修改您的联系方式</h6>
+        <input type="text" id="a_name" placeholder="称呼"><br>
+        <input type="text" id="a_address" placeholder="联系地址"><br>
+        <input type="text" id="a_tel" placeholder="联系方式"><br>
+        <input type="button" value="提交" onclick="submitAddress()">
+    </div>
+</div>
+<script src="js/jquery-1.8.0.min.js"></script>
+<script src="js/common.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="http://cdn.staticfile.org/clipboard.js/2.0.1/clipboard.min.js"></script>
+<script>
+    $(function () {
+        checkLogin();
+        const user = JSON.parse(getCookie("userdata"));
+        $(".userName").text(user.nickname);
+        $("#userHeadImg").attr("src", user.avatar);
+        $(".integral").text("积分 " + user.score);
+        $("#agentUrl").val(window.location.href + "?agent=A" + user.userId);
+        const awardsList = $("#awardsList");
+        for (var i = 0; i < Object.keys(user.linPins).length; i++) {
+            const key = Object.keys(user.linPins)[i];
+            const d = user.linPins[key];
+
+            awardsList.append("<a href=\"javascript:\"  class=\"a1\" isgoods=\"0\">" +
+                "<img src='images/" + d.kind + ".png'><span></span></a>")
+        }
+
+        const hh_id = getCookie("hh_id");
+        $.ajax({
+            type: "GET", //提交方式
+            url: getUrl("/users/" + hh_id + "/gamesRecords"),
+            data: {},
+            success: function (games, status) {//返回数据根据结果进行相应的处理
+                if (games !== undefined) {
+                    const gamesList = $("#gameRecords");
+                    for (var i = 0; i < games.length; i++) {
+                        const d = games[i];
+                        const choose = d.choose;
+                        var win = 0;
+                        if (d.leftPoint > d.rightPoint) {
+                            win = 1
+                        } else if (d.leftPoint < d.rightPoint) {
+                            win = -1
+                        }
+
+                        gamesList.append("<div class=\"item\"><div class=\"time\">" + d.chooseAt + "</div>" +
+                            "<div class=\"result clf "  + (win > 0 ? "zhuShen" : win < 0 ? "keShen" : "") +"\">" +
+                            "<div class=\"state fl " + (choose ? "choice" : "") + " \"><img src='" + d.leftPic + "'/><span>" + d.leftName + "</span></div>" +
+                            "<div class=\"state fr " + (!choose ? "choice" : "") + "\"><img src='" + d.rightPic + "'><span>" + d.rightName + "</span></div></div></div>")
+                    }
+
+                } else {
+                    alert(data.message)
+                }
+            }
+        });
+
+    })
+
+
+    var clipboard = new ClipboardJS('.btn');
+
+    clipboard.on('success', function(e) {
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        toastr.info('复制成功')
+        e.clearSelection();
+    });
+
+    clipboard.on('error', function(e) {
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+    });
+
+    function sign() {
+        const hh_id = getCookie("hh_id");
+        $.ajax({
+            type: "PUT", //提交方式
+            url: getUrl("/users/" + hh_id + "/sign"),
+            dataType: 'json',
+            data: JSON.stringify({}),
+            success: function (data, status) {//返回数据根据结果进行相应的处理
+                if (data !== undefined) {
+                    getUsers(hh_id);
+                } else {
+                    alert(data.message)
+                }
+                //location.reload()
+            },
+            error: function (err) {
+                if (err.status !== 200) {
+                    const res = JSON.parse(err.responseText);
+                    alert(res.message);
+                }
+            }
+        });
+    }
+
+</script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script>
+    $.ajax({
+        url: getUrl("/sign?url=" + window.location.href),
+        type: "get",
+        dataType: "json",
+        async: false,
+        success: function (data) {
+            console.log(data);
+            var appIdVal = data.appId;
+            var timestampVal = data.timestamp;
+            var nonceStrVal = data.nonceStr;
+            var signatureVal = encodeURIComponent(data.signature);
+            wx.config({
+                debug: false,
+                // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                appId: appIdVal,
+                // 必填，公众号的唯一标识
+                timestamp: timestampVal,
+                // 必填，生成签名的时间戳
+                nonceStr: nonceStrVal,
+                // 必填，生成签名的随机串
+                signature: signatureVal,
+                // 必填，签名
+                jsApiList: [
+                    'onMenuShareAppMessage',//分享给好友
+                    'onMenuShareTimeline',//分享到朋友圈
+                    'onMenuShareQQ',//分享到QQ好友
+                    'onMenuShareWeibo',//分享到微博
+                    'onMenuShareQZone'//分享QQ空间
+                ] // 必填，需要使用的JS接口列表
+            });
+        },
+        error: function () {
+            alert("您好，服务器繁忙中，请稍后重试  ");
+        }
+    })
+    const hh_id = getCookie("hh_id");
+    wx.ready(function () {
+        var shareTitle = "竞猜世界杯胜负，赢华为Mate10手机";
+        var shareDesc = "这次你不要再去朋友圈“跳楼”了";
+        // var linkUrl="http://ceibs.54jj.cn/zhongou/index.html";
+        var linkUrl = "http://ceibs.54jj.cn/shijiebei/index.html?agent=A" + hh_id;
+        var imgUrl = "http://ceibs.54jj.cn/shijiebei/images/sharelogo.jpg";
+
+        // 分享给微信好友
+        wx.onMenuShareAppMessage({
+            title: shareTitle,
+            // 分享标题
+            desc: shareDesc,
+            // 分享描述
+            link: linkUrl,
+            // 分享链接
+            imgUrl: imgUrl,
+            // 分享图标
+            type: 'link',
+            // 分享类型,music、video或link，不填默认为link
+            dataUrl: '',
+            // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () {
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+
+        // 分享到朋友圈
+        wx.onMenuShareTimeline({
+            title: shareTitle,
+            // 分享标题
+            desc: shareDesc,
+            // 分享描述
+            link: linkUrl,
+            // 分享链接
+            imgUrl: imgUrl,
+            // 分享图标
+            type: 'link',
+            // 分享类型,music、video或link，不填默认为link
+            dataUrl: '',
+            // 如果type是music或video，则要提供数据链接，默认为空
+            success: function (res) {
+            },
+            cancel: function (res) {
+                // 用户取消分享后执行的回调函数
+            },
+            fail: function (res) {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+        wx.error(function (res) {
+            // config信息验证失败会执行error函数，如签名过期导致验证失败
+        });
+    });
+</script>
+</body>
+</html>

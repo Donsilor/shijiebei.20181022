@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>卡卡买世界杯竞猜-礼品兑换</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/luckyDraw.css">
+</head>
+<body>
+<div class="w">
+    <img src="images/logo.png" alt="" class="logo">
+
+    <div class="integral">
+        <img src="images/index_img_1.png" alt="" class="img_1">
+        <span id="jifen">我的积分 1000</span>
+    </div>
+
+    <div class="luckyDrawDiv clf">
+        <div id="turntable">
+            <div class="turntableDiv clf">
+                <div objtype="cj_item" id="award_1" objgoods="0" onclick="getLiPin('award_1', 800)"
+                     style="height: 91px; background:#ffebeb url('images/award_5.png') center 20%/80% no-repeat;">
+                    <span id="awardname_1">800积分</span></div>
+                <div objtype="cj_item" id="award_2" objgoods="0" onclick="getLiPin('award_2', 4000)"
+                     style="height: 91px; background:#ffebeb url('images/award_2.png') center 20%/80% no-repeat;">
+                    <span id="awardname_2">4000积分</span></div>
+                <div objtype="cj_item" id="award_3" objgoods="0" onclick="getLiPin('award_3', 6000)"
+                     style="height: 91px; background:#ffebeb url('images/award_4.png') center 20%/80% no-repeat;">
+                    <span id="awardname_3">6000积分</span></div>
+                <div objtype="cj_item" id="award_8" objgoods="1" onclick="getLiPin('award_4', 8000)"
+                     style="height: 91px; background:#ffebeb url('images/award_3.png') center 20%/80% no-repeat;">
+                    <span id="awardname_8">8000积分</span></div>
+                <div objtype="cj_item" id="award_9" objgoods="0" onclick="getLiPin('award_5', 10000)"
+                     style="height: 91px; background:#ffebeb url('images/award_1.png') center 20%/80% no-repeat;">
+                    <span id="awardname_9">10000积分</span></div>
+
+            </div>
+        </div>
+    </div>
+    <div class="fixedMenu">
+        <a href="ss.html" class="icon_1">赛事竞猜</a>
+        <a href="userCenter.html" class="icon_4">赚取积分</a>
+        <a href="luckyDraw.html" class="icon_2 active">积分兑换</a>
+        <a href="ranking.html" class="icon_3">排行榜</a>
+        
+    </div>
+</div>
+
+<div class="pop_ups" id="pop" style="display:none;">
+    <a href="#" id="close"><img src="images/close.png" alt=""></a>
+    <form action="">
+        <h6>恭喜，你中了<span>一等奖</span></h6>
+        请留下联系方式:<br>
+        <input type="text" placeholder="称呼"><br>
+        <input type="text" placeholder="联系地址"><br>
+        <input type="text" placeholder="联系方式"><br>
+        活动结束后我们将跟您联系并寄出奖品<br>
+        <input type="submit" value="提交">
+    </form>
+</div>
+<script src="js/jquery-1.8.0.min.js"></script>
+<script src="js/common.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script>
+    $(function () {
+        checkLogin();
+        const user = JSON.parse(getCookie("userdata"));
+        $("#jifen").text("积分 " + user.score);
+    })
+
+    function getLiPin(kind, score) {
+        const hh_id = getCookie("hh_id");
+        const user = JSON.parse(getCookie("userdata"));
+        console.log(user, kind, score)
+        if (user.score < score) {
+            alert("您的积分不足");
+            return
+        }
+        $.ajax({
+            type: "PUT", //提交方式
+            url: getUrl("/users/" + hh_id + "/exchange"),
+            dataType: 'json',
+            data: JSON.stringify({
+                kind: kind,
+                score: score
+            }),
+            success: function (data, status) {//返回数据根据结果进行相应的处理
+                if (data !== undefined) {
+                    alert("恭喜您，中奖啦")
+                    setTimeout(function () {
+                        getUsers(hh_id);
+                    }, 3000)
+                } else {
+                    alert(data.message)
+                }
+
+            },
+            error: function (err) {
+                if (err.status !== 200) {
+                    const res = JSON.parse(err.responseText);
+                    alert(res.message);
+                }
+            }
+        });
+    }
+
+</script>
+
+</body>
+
+<script>
+
+    function Ele(select) {
+        return document.querySelector(select);
+    }
+
+    function Eles(select) {
+        return document.querySelectorAll(select)
+    }
+
+    var turntable = Ele('#turntable');
+    var turntableWidth = turntable.offsetWidth;
+
+    var turntableDivItem = Eles('.turntableDiv > div');
+    turntableDivItem.forEach(function (item, index) {
+        item.style.height = item.offsetWidth + 'px';
+    });
+
+
+    window.onload = function () {
+
+        turntable.style.height = turntableWidth + 'px';
+
+        turntableDivItem.forEach(function (item, index) {
+            item.style.height = item.offsetWidth + 'px';
+        });
+
+    };
+
+    window.onresize = function () {
+
+        turntable.style.height = turntableWidth + 'px';
+
+        turntableDivItem.forEach(function (item, index) {
+            item.style.height = item.offsetWidth + 'px';
+        });
+
+
+    };
+
+    function show(id1, id2, id3) {
+        var a = document.getElementById(id1);
+        var b = document.getElementById(id2);
+        var c = document.getElementById(id3);
+
+//        a.onclick = function () {
+//            b.style.display === 'none' ? b.style.display = 'block' : b.style.display = 'none'
+//        };
+        c.onclick = function () {
+            b.style.display = 'none';
+        }
+    }
+    show('go', 'pop', 'close');
+
+
+</script>
+
+<script>
+    $.ajax({
+        url: getUrl("/sign?url=" + window.location.href),
+        type: "get",
+        dataType: "json",
+        async: false,
+        success: function (data) {
+            console.log(data);
+            var appIdVal = data.appId;
+            var timestampVal = data.timestamp;
+            var nonceStrVal = data.nonceStr;
+            var signatureVal = encodeURIComponent(data.signature);
+            wx.config({
+                debug: false,
+                // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                appId: appIdVal,
+                // 必填，公众号的唯一标识
+                timestamp: timestampVal,
+                // 必填，生成签名的时间戳
+                nonceStr: nonceStrVal,
+                // 必填，生成签名的随机串
+                signature: signatureVal,
+                // 必填，签名
+                jsApiList: [
+                    'onMenuShareAppMessage',//分享给好友
+                    'onMenuShareTimeline',//分享到朋友圈
+                    'onMenuShareQQ',//分享到QQ好友
+                    'onMenuShareWeibo',//分享到微博
+                    'onMenuShareQZone'//分享QQ空间
+                ] // 必填，需要使用的JS接口列表
+            });
+        },
+        error: function () {
+            alert("您好，服务器繁忙中，请稍后重试  ");
+        }
+    })
+    const hh_id = getCookie("hh_id");
+    wx.ready(function () {
+        var shareTitle = "竞猜世界杯胜负，赢华为Mate10手机";
+        var shareDesc = "这次你不要再去朋友圈“跳楼”了";
+        // var linkUrl="http://ceibs.54jj.cn/zhongou/index.html";
+        var linkUrl = "http://ceibs.54jj.cn/shijiebei/index.html?agent=A" + hh_id;
+        var imgUrl = "http://ceibs.54jj.cn/shijiebei/images/sharelogo.jpg";
+
+        // 分享给微信好友
+        wx.onMenuShareAppMessage({
+            title: shareTitle,
+            // 分享标题
+            desc: shareDesc,
+            // 分享描述
+            link: linkUrl,
+            // 分享链接
+            imgUrl: imgUrl,
+            // 分享图标
+            type: 'link',
+            // 分享类型,music、video或link，不填默认为link
+            dataUrl: '',
+            // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () {
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+
+        // 分享到朋友圈
+        wx.onMenuShareTimeline({
+            title: shareTitle,
+            // 分享标题
+            desc: shareDesc,
+            // 分享描述
+            link: linkUrl,
+            // 分享链接
+            imgUrl: imgUrl,
+            // 分享图标
+            type: 'link',
+            // 分享类型,music、video或link，不填默认为link
+            dataUrl: '',
+            // 如果type是music或video，则要提供数据链接，默认为空
+            success: function (res) {
+            },
+            cancel: function (res) {
+                // 用户取消分享后执行的回调函数
+            },
+            fail: function (res) {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+        wx.error(function (res) {
+            // config信息验证失败会执行error函数，如签名过期导致验证失败
+        });
+    });
+</script>
+</html>

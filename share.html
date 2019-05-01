@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>卡卡买世界杯竞猜-分享海报</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/luckyDraw.css">
+</head>
+<body>
+<div class="w">
+    <div class="sharepc" style=" width:100%; height:auto; padding:5% 10%; text-align:center;"><img
+            src="images/share.jpg" style=" width:90%;"></div>
+    <div class="sharep"
+         style=" font-size:0.8rem; padding:0.5rem 2rem; line-height:1.5rem; color:#FFF; text-align:center;">长按保存图片转发到朋友圈<br/>或者点击右上角按钮转发到朋友圈，每天第一次分享可获得50积分
+    </div>
+    <div class="fixedMenu">
+        <div class="fixedMenu">
+            <a href="ss.html" class="icon_1">赛事竞猜</a>
+            <a href="userCenter.html" class="icon_4 active">赚取积分</a>
+            <a href="luckyDraw.html" class="icon_2 ">积分兑换</a>
+            <a href="ranking.html" class="icon_3">排行榜</a>
+            
+        </div>
+    </div>
+</div>
+<script src="js/jquery-1.8.0.min.js"></script>
+<script src="js/common.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script>
+    $.ajax({
+        url: getUrl("/sign?url=" + window.location.href),
+        type: "get",
+        dataType: "json",
+        async: false,
+        success: function (data) {
+            console.log(data);
+            var appIdVal = data.appId;
+            var timestampVal = data.timestamp;
+            var nonceStrVal = data.nonceStr;
+            var signatureVal = encodeURIComponent(data.signature);
+            wx.config({
+                debug: false,
+                // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                appId: appIdVal,
+                // 必填，公众号的唯一标识
+                timestamp: timestampVal,
+                // 必填，生成签名的时间戳
+                nonceStr: nonceStrVal,
+                // 必填，生成签名的随机串
+                signature: signatureVal,
+                // 必填，签名
+                jsApiList: [
+                    'onMenuShareAppMessage',//分享给好友
+                    'onMenuShareTimeline',//分享到朋友圈
+                    'onMenuShareQQ',//分享到QQ好友
+                    'onMenuShareWeibo',//分享到微博
+                    'onMenuShareQZone'//分享QQ空间
+                ] // 必填，需要使用的JS接口列表
+            });
+        },
+        error: function () {
+            alert("您好，服务器繁忙中，请稍后重试  ");
+        }
+    })
+    const hh_id = getCookie("hh_id");
+    wx.ready(function () {
+        var shareTitle = "竞猜世界杯胜负，赢华为Mate10手机";
+        var shareDesc = "这次你不要再去朋友圈“跳楼”了";
+        // var linkUrl="http://ceibs.54jj.cn/zhongou/index.html";
+        var linkUrl = "http://ceibs.54jj.cn/shijiebei/index.html?agent=A" + hh_id;
+        var imgUrl = "http://ceibs.54jj.cn/shijiebei/images/sharelogo.jpg";
+
+        // 分享给微信好友
+        wx.onMenuShareAppMessage({
+            title: shareTitle,
+            // 分享标题
+            desc: shareDesc,
+            // 分享描述
+            link: linkUrl,
+            // 分享链接
+            imgUrl: imgUrl,
+            // 分享图标
+            type: 'link',
+            // 分享类型,music、video或link，不填默认为link
+            dataUrl: '',
+            // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () {
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+
+        // 分享到朋友圈
+        wx.onMenuShareTimeline({
+            title: shareTitle,
+            // 分享标题
+            desc: shareDesc,
+            // 分享描述
+            link: linkUrl,
+            // 分享链接
+            imgUrl: imgUrl,
+            // 分享图标
+            type: 'link',
+            // 分享类型,music、video或link，不填默认为link
+            dataUrl: '',
+            // 如果type是music或video，则要提供数据链接，默认为空
+            success: function (res) {
+            },
+            cancel: function (res) {
+                // 用户取消分享后执行的回调函数
+            },
+            fail: function (res) {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+        wx.error(function (res) {
+            // config信息验证失败会执行error函数，如签名过期导致验证失败
+        });
+    });
+</script>
+</body>
+</html>

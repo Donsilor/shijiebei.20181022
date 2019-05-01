@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>用户中心</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/userCenter.css">
+</head>
+<body>
+<div class="w">
+    <img src="images/logo.png" alt="" class="logo">
+
+    <div class="user">
+        <a href="javascript:$('#userAddress').show();">
+            <img id="userHeadImg"
+                 src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTL5beI6mWClkwPIX1WgsFOYgdY84QqVibLPdSkwVIO1j9gOrflnDxVkOE2YibDPdkFZImHeToZGddiaA/132"
+                 alt="">
+        </a>
+    </div>
+    <div class="userName">嬉笑不颜开</div>
+    <div class="integral"><span>积分 999</span></div>
+    <a href="javascript:" class="signIn" onclick="sign()">签到</a>
+    <div class="inviteLink">
+        <span>邀请链接</span>
+        <input type="text" title="" id="agentUrl" value="https://www.baidu.com">
+    </div>
+    <div class="btnDiv clf">
+        <a href="javascript:" class="fl">复制邀请链接</a>
+        <a href="share.html" class="fr">分享给好友</a>
+    </div>
+    <div class="winningRecord">
+        <p class="title">中奖记录</p>
+        <ul class="clf" id="awardsList">
+            <li>
+                <a href="javascript:" onclick="showAwardsDetail(this);" class="a1"
+                   hasid="10233cda-f152-4972-b581-70ed629e9a97" isgoods="0"><img
+                        src="images/award_1.png" alt=""><span>小天才电话手表</span></a>
+                <div class="pup" style="display:none;" objtype="awardsQuanDesc"
+                     hasid="10233cda-f152-4972-b581-70ed629e9a97">
+                    <div class="close" onclick="hideAwardsDetail()"><img src="images/close_1.png" alt=""></div>
+                    <p>一、领取码：<span id="codeText_0">B1523</span> <input class="yaoqingma" type="button" value="复制领取码"
+                                                                       id="btnQuanma_0"
+                                                                       data-clipboard-target="#codeText_0"><br>二、奖品说明：满20立减5元优惠卷<br>三、领取时限：6月28日-7月18日<br>四、领取方法<br>1、
+                        扫描下方二维码关注“久久丫会员服务号”<br>2、 点击下方“会员账户”→“个人中心”注册成为久久丫会员<br>3、
+                        返回公众号界面，点击“会员账户”→“个人中心”在优惠码兑换栏输入券码，兑换优惠券。<br>4、
+                        到店消费时告知店员您要使用会员优惠券，在店员引导下领取鸭脖一份。</p><img src="images/ewm.jpg?version=1.1.7" alt="">
+                </div>
+            </li>
+            <li>
+                <a href="javascript:" onclick="showAwardsDetail(this);" class="a1"
+                   hasid="2c2b7758-3944-431f-86ac-d78ebdbfbfad" isgoods="0"><img
+                        src="images/award_2.png" alt=""><span>Ipad</span></a>
+                <div class="pup" style="display:none;" objtype="awardsQuanDesc"
+                     hasid="2c2b7758-3944-431f-86ac-d78ebdbfbfad">
+                    <div class="close" onclick="hideAwardsDetail()"><img src="images/close_1.png" alt=""></div>
+                    <p>一、领取码：<span id="codeText_1">B1305</span> <input class="yaoqingma" type="button" value="复制领取码"
+                                                                       id="btnQuanma_1"
+                                                                       data-clipboard-target="#codeText_1"><br>二、奖品说明：满20立减5元优惠卷<br>三、领取时限：6月28日-7月18日<br>四、领取方法<br>1、
+                        扫描下方二维码关注“久久丫会员服务号”<br>2、 点击下方“会员账户”→“个人中心”注册成为久久丫会员<br>3、
+                        返回公众号界面，点击“会员账户”→“个人中心”在优惠码兑换栏输入券码，兑换优惠券。<br>4、
+                        到店消费时告知店员您要使用会员优惠券，在店员引导下领取鸭脖一份。</p><img src="images/ewm.jpg?version=1.1.7" alt=""></div>
+            </li>
+            <li>
+                <a href="javascript:" onclick="showAwardsDetail(this);" class="a1"
+                   hasid="d487ccbe-c51c-4af6-a076-106e07a0b76e" isgoods="0"><img
+                        src="images/award_3.png" alt=""><span>苹果7(32G)</span></a>
+                <div class="pup" style="display:none;" objtype="awardsQuanDesc"
+                     hasid="d487ccbe-c51c-4af6-a076-106e07a0b76e">
+                    <div class="close" onclick="hideAwardsDetail()"><img src="images/close_1.png" alt=""></div>
+                    <p>一、领取码：<span id="codeText_2">B1700</span> <input class="yaoqingma" type="button" value="复制领取码"
+                                                                       id="btnQuanma_2"
+                                                                       data-clipboard-target="#codeText_2"><br>二、奖品说明：满20立减5元优惠卷<br>三、领取时限：6月28日-7月18日<br>四、领取方法<br>1、
+                        扫描下方二维码关注“久久丫会员服务号”<br>2、 点击下方“会员账户”→“个人中心”注册成为久久丫会员<br>3、
+                        返回公众号界面，点击“会员账户”→“个人中心”在优惠码兑换栏输入券码，兑换优惠券。<br>4、
+                        到店消费时告知店员您要使用会员优惠券，在店员引导下领取鸭脖一份。</p><img src="images/ewm.jpg?version=1.1.7" alt=""></div>
+            </li>
+            <li>
+                <a href="javascript:" onclick="showAwardsDetail(this);" class="a1"
+                   hasid="10233cda-f152-4972-b581-70ed629e9a97" isgoods="0"><img
+                        src="images/award_4.png" alt=""><span>折叠自行车</span></a>
+                <div class="pup" style="display:none;" objtype="awardsQuanDesc"
+                     hasid="10233cda-f152-4972-b581-70ed629e9a97">
+                    <div class="close" onclick="hideAwardsDetail()"><img src="images/close_1.png" alt=""></div>
+                    <p>一、领取码：<span id="codeText_3">B1523</span> <input class="yaoqingma" type="button" value="复制领取码"
+                                                                       id="btnQuanma_3"
+                                                                       data-clipboard-target="#codeText_0"><br>二、奖品说明：满20立减5元优惠卷<br>三、领取时限：6月28日-7月18日<br>四、领取方法<br>1、
+                        扫描下方二维码关注“久久丫会员服务号”<br>2、 点击下方“会员账户”→“个人中心”注册成为久久丫会员<br>3、
+                        返回公众号界面，点击“会员账户”→“个人中心”在优惠码兑换栏输入券码，兑换优惠券。<br>4、
+                        到店消费时告知店员您要使用会员优惠券，在店员引导下领取鸭脖一份。</p><img src="images/ewm.jpg?version=1.1.7" alt=""></div>
+            </li>
+            <li>
+                <a href="javascript:" onclick="showAwardsDetail(this);" class="a1"
+                   hasid="2c2b7758-3944-431f-86ac-d78ebdbfbfad" isgoods="0"><img
+                        src="images/award_5.png" alt=""><span>10元现金</span></a>
+                <div class="pup" style="display:none;" objtype="awardsQuanDesc"
+                     hasid="2c2b7758-3944-431f-86ac-d78ebdbfbfad">
+                    <div class="close" onclick="hideAwardsDetail()"><img src="images/close_1.png" alt=""></div>
+                    <p>一、领取码：<span id="codeText_4">B1305</span> <input class="yaoqingma" type="button" value="复制领取码"
+                                                                       id="btnQuanma_4"
+                                                                       data-clipboard-target="#codeText_1"><br>二、奖品说明：满20立减5元优惠卷<br>三、领取时限：6月28日-7月18日<br>四、领取方法<br>1、
+                        扫描下方二维码关注“久久丫会员服务号”<br>2、 点击下方“会员账户”→“个人中心”注册成为久久丫会员<br>3、
+                        返回公众号界面，点击“会员账户”→“个人中心”在优惠码兑换栏输入券码，兑换优惠券。<br>4、
+                        到店消费时告知店员您要使用会员优惠券，在店员引导下领取鸭脖一份。</p><img src="images/ewm.jpg?version=1.1.7" alt=""></div>
+            </li>
+            <li>
+                <a href="javascript:" onclick="showAwardsDetail(this);" class="a1"
+                   hasid="d487ccbe-c51c-4af6-a076-106e07a0b76e" isgoods="0"><img
+                        src="images/award_4.png" alt=""><span>折叠自行车</span></a>
+                <div class="pup" style="display:none;" objtype="awardsQuanDesc"
+                     hasid="d487ccbe-c51c-4af6-a076-106e07a0b76e">
+                    <div class="close" onclick="hideAwardsDetail()"><img src="images/close_1.png" alt=""></div>
+                    <p>一、领取码：<span id="codeText_5">B1700</span> <input class="yaoqingma" type="button" value="复制领取码"
+                                                                       id="btnQuanma_5"
+                                                                       data-clipboard-target="#codeText_2"><br>二、奖品说明：满20立减5元优惠卷<br>三、领取时限：6月28日-7月18日<br>四、领取方法<br>1、
+                        扫描下方二维码关注“久久丫会员服务号”<br>2、 点击下方“会员账户”→“个人中心”注册成为久久丫会员<br>3、
+                        返回公众号界面，点击“会员账户”→“个人中心”在优惠码兑换栏输入券码，兑换优惠券。<br>4、
+                        到店消费时告知店员您要使用会员优惠券，在店员引导下领取鸭脖一份。</p><img src="images/ewm.jpg?version=1.1.7" alt=""></div>
+            </li>
+            <li>
+                <a href="javascript:" onclick="showAwardsDetail(this);" class="a1"
+                   hasid="10233cda-f152-4972-b581-70ed629e9a97" isgoods="0"><img
+                        src="images/award_1.png" alt=""><span>小天才电话手表</span></a>
+                <div class="pup" style="display:none;" objtype="awardsQuanDesc"
+                     hasid="10233cda-f152-4972-b581-70ed629e9a97">
+                    <div class="close" onclick="hideAwardsDetail()"><img src="images/close_1.png" alt=""></div>
+                    <p>一、领取码：<span id="codeText_6">B1523</span> <input class="yaoqingma" type="button" value="复制领取码"
+                                                                       id="btnQuanma_6"
+                                                                       data-clipboard-target="#codeText_0"><br>二、奖品说明：满20立减5元优惠卷<br>三、领取时限：6月28日-7月18日<br>四、领取方法<br>1、
+                        扫描下方二维码关注“久久丫会员服务号”<br>2、 点击下方“会员账户”→“个人中心”注册成为久久丫会员<br>3、
+                        返回公众号界面，点击“会员账户”→“个人中心”在优惠码兑换栏输入券码，兑换优惠券。<br>4、
+                        到店消费时告知店员您要使用会员优惠券，在店员引导下领取鸭脖一份。</p><img src="images/ewm.jpg?version=1.1.7" alt=""></div>
+            </li>
+            <li>
+                <a href="javascript:" onclick="showAwardsDetail(this);" class="a1"
+                   hasid="2c2b7758-3944-431f-86ac-d78ebdbfbfad" isgoods="0"><img
+                        src="images/award_2.png" alt=""><span>Ipad</span></a>
+                <div class="pup" style="display:none;" objtype="awardsQuanDesc"
+                     hasid="2c2b7758-3944-431f-86ac-d78ebdbfbfad">
+                    <div class="close" onclick="hideAwardsDetail()"><img src="images/close_1.png" alt=""></div>
+                    <p>一、领取码：<span id="codeText_7">B1305</span> <input class="yaoqingma" type="button" value="复制领取码"
+                                                                       id="btnQuanma_7"
+                                                                       data-clipboard-target="#codeText_1"><br>二、奖品说明：满20立减5元优惠卷<br>三、领取时限：6月28日-7月18日<br>四、领取方法<br>1、
+                        扫描下方二维码关注“久久丫会员服务号”<br>2、 点击下方“会员账户”→“个人中心”注册成为久久丫会员<br>3、
+                        返回公众号界面，点击“会员账户”→“个人中心”在优惠码兑换栏输入券码，兑换优惠券。<br>4、
+                        到店消费时告知店员您要使用会员优惠券，在店员引导下领取鸭脖一份。</p><img src="images/ewm.jpg?version=1.1.7" alt=""></div>
+            </li>
+            <li>
+                <a href="javascript:" onclick="showAwardsDetail(this);" class="a1"
+                   hasid="d487ccbe-c51c-4af6-a076-106e07a0b76e" isgoods="0"><img
+                        src="images/award_3.png" alt=""><span>苹果7(32G)</span></a>
+                <div class="pup" style="display:none;" objtype="awardsQuanDesc"
+                     hasid="d487ccbe-c51c-4af6-a076-106e07a0b76e">
+                    <div class="close" onclick="hideAwardsDetail()"><img src="images/close_1.png" alt=""></div>
+                    <p>一、领取码：<span id="codeText_8">B1700</span> <input class="yaoqingma" type="button" value="复制领取码"
+                                                                       id="btnQuanma_8"
+                                                                       data-clipboard-target="#codeText_2"><br>二、奖品说明：满20立减5元优惠卷<br>三、领取时限：6月28日-7月18日<br>四、领取方法<br>1、
+                        扫描下方二维码关注“久久丫会员服务号”<br>2、 点击下方“会员账户”→“个人中心”注册成为久久丫会员<br>3、
+                        返回公众号界面，点击“会员账户”→“个人中心”在优惠码兑换栏输入券码，兑换优惠券。<br>4、
+                        到店消费时告知店员您要使用会员优惠券，在店员引导下领取鸭脖一份。</p><img src="images/ewm.jpg?version=1.1.7" alt=""></div>
+            </li>
+        </ul>
+    </div>
+    <div class="guessRecord" id="guessRecordList"><p class="title">世界杯竞猜记录</p>
+        <div class="list" id="gameRecords">
+            <!--<div class="item">-->
+            <!--<div class="time">2018-6-7</div>-->
+            <!--<div class="result clf">-->
+            <!--<div class="state fl choice"><img src="images/logo_1.png?version=1.1.7" alt=""><span>沙特阿拉伯</span></div>-->
+            <!--<div class="state fr"><img src="images/logo_2.png?version=1.1.7" alt=""><span>俄罗斯</span></div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="item">-->
+            <!--<div class="time">2018-6-8</div>-->
+            <!--<div class="result clf">-->
+            <!--<div class="state fl"><img src="images/logo_6.png?version=1.1.7" alt=""><span>伊朗</span></div>-->
+            <!--<div class="state fr choice"><img src="images/logo_8.png?version=1.1.7" alt=""><span>西班牙</span></div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="item">-->
+            <!--<div class="time">2018-6-7</div>-->
+            <!--<div class="result clf">-->
+            <!--<div class="state fl"><img src="images/logo_1.png?version=1.1.7" alt=""><span>沙特阿拉伯</span></div>-->
+            <!--<div class="state fr choice"><img src="images/logo_2.png?version=1.1.7" alt=""><span>俄罗斯</span></div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="item">-->
+            <!--<div class="time">2018-6-8</div>-->
+            <!--<div class="result clf">-->
+            <!--<div class="state fl"><img src="images/logo_6.png?version=1.1.7" alt=""><span>伊朗</span></div>-->
+            <!--<div class="state fr"><img src="images/logo_8.png?version=1.1.7" alt=""><span>西班牙</span></div>-->
+            <!--</div>-->
+            <!--</div>-->
+        </div>
+    </div>
+    <div class="fixedMenu">
+        <div class="fixedMenu">
+            <a href="ss.html" class="icon_1">赛事竞猜</a>
+            <a href="luckyDraw.html" class="icon_2 ">积分兑换</a>
+            <a href="ranking.html" class="icon_3">排行榜</a>
+            <a href="userCenter.html" class="icon_4 active">个人中心</a>
+        </div>
+    </div>
+</div>
+<div class="pop_ups " id="userAddress" style="display:none;">
+    <a href="javascript:$('#userAddress').hide();" id="close"><img src="images/close.png" alt=""></a>
+    <div style="text-Align:center">
+        <h6>修改您的联系方式</h6>
+        <input type="text" id="a_name" placeholder="称呼"><br>
+        <input type="text" id="a_address" placeholder="联系地址"><br>
+        <input type="text" id="a_tel" placeholder="联系方式"><br>
+        <input type="button" value="提交" onclick="submitAddress()">
+    </div>
+</div>
+<script src="js/jquery-1.8.0.min.js"></script>
+<script src="js/common.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script>
+    $(function () {
+        const user = JSON.parse(getCookie("userdata"));
+        $(".userName").text(user.nickname);
+        $("#userHeadImg").attr("src", user.avatar);
+        $(".integral").text("积分 " + user.score);
+        $("#agentUrl").val(window.location.href + "?agent=" + user.userId);
+
+
+        const hh_id = getCookie("hh_id");
+        $.ajax({
+            type: "GET", //提交方式
+            url: getUrl("/users/" + hh_id + "/gamesRecords"),
+            data: {},
+            success: function (games, status) {//返回数据根据结果进行相应的处理
+                if (games !== undefined) {
+                    const gamesList = $("#gameRecords");
+                    for (var i = 0; i < games.length; i++) {
+                        const d = games[i];
+                        const choose = d.choose;
+
+                        gamesList.append("<div class=\"item\"><div class=\"time\">" + d.chooseAt + "</div>" +
+                            "<div class=\"result clf\">" +
+                            "<div class=\"state fl " + (choose ? "choice" : "") + " \"><img src='" + d.leftPic + "'/><span>" + d.leftName + "</span></div>" +
+                            "<div class=\"state fr " + (!choose ? "choice" : "") + "\"><img src='" + d.rightPic + "'><span>" + d.rightName + "</span></div></div></div>")
+                    }
+
+                } else {
+                    alert(data.message)
+                }
+            }
+        });
+
+    })
+
+    function sign() {
+        const hh_id = getCookie("hh_id");
+        $.ajax({
+            type: "PUT", //提交方式
+            url: getUrl("/users/" + hh_id + "/sign"),
+            dataType: 'json',
+            data: JSON.stringify({}),
+            success: function (data, status) {//返回数据根据结果进行相应的处理
+                if (data !== undefined) {
+                    getUsers(hh_id);
+                } else {
+                    alert(data.message)
+                }
+            },
+            error: function (err) {
+                if (err.status !== 200) {
+                    const res = JSON.parse(err.responseText);
+                    alert(res.message);
+                }
+            }
+        });
+    }
+
+</script>
+</body>
+</html>

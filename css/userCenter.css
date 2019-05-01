@@ -1,0 +1,72 @@
+
+body > .w{background: url("../images/index_bg.jpg") no-repeat center top/cover;padding: 1px 0;padding-bottom: 4rem;}
+
+
+img.logo{display: block;width:18.4%;margin-left: 2.5%;padding-top: 1rem;}
+
+
+.user{width: 5.5rem;height: 5.5rem;margin: -3rem auto .5rem;position: relative;border: .3rem solid #d5cfce;border-radius: 50%;overflow: hidden;}
+.user img{display: block;width: 100%;height: 100%;border-radius: 50%;}
+
+
+.userName{font:bold 1rem/2 '';text-align: center;color: #fff;}
+
+
+.integral{text-align: center;margin: 1rem 0;}
+.integral span{display: inline-block;font: .8rem/1.8 '';padding: 0 .6rem;border: 2px solid #fff;border-radius: 15px;color: #fff;}
+
+
+a.signIn{display: block;width: 35%;font: 1.1rem/2.4 '';text-align: center;margin: 0 auto 2rem;border-radius: 25px;border: 2px solid #fff;color: #f00;background: linear-gradient(to top, #ffc600, #ffd900, #ffea00);}
+
+
+.inviteLink{width: 90%;margin: 0 auto 1rem;background-color: #fff;font: 1rem/2.2 '';border-radius: 5px;padding: 0 2.5%;color: #203aba;border-top: 2px solid rgba(20,58,142,.7);border-bottom: 2px solid rgba(123,159,244,.7);}
+.inviteLink input{width: 70%;height: 2.2rem;margin-left: .8rem;font-size: 1rem;color: inherit;border: none;}
+
+
+.btnDiv{width: 90%;margin: 0 auto 1rem;}
+.btnDiv a{width: 48%;font: 1rem/2.8 '';text-align: center;color: #fff;background: url("../images/btn_style.png") no-repeat center/contain;}
+.btnDiv button{width: 48%;font: 1rem/2.8 '';text-align: center;color: #fff;background: url("../images/btn_style.png") no-repeat center/contain;}
+
+.zhuShen > .t_logo:nth-of-type(1) > div:before{content: '胜';position: absolute;font:bold 2rem/1.5 '';left: -2rem;color: #d52b1e;text-shadow: 0 0 5px 5px #ffd300;}
+.keShen > .t_logo:nth-of-type(3) > div:after{content: '胜';position: absolute;font:bold 2rem/1.5 '';right: -2rem;color: #d52b1e;text-shadow: 0 0 5px 5px #ffd300;}
+
+
+.winningRecord{background-color: #fff;border-radius: 5px;width: 90%;margin: auto;}
+.winningRecord .title{text-align: center;font: 1rem/3 'Microsoft YaHei';color: #e5061a;}
+.winningRecord ul{width: 100%;height:14rem;text-align: center;border-top:1px solid #ccc;position:relative;overflow-y: scroll;}
+.winningRecord ul::-webkit-scrollbar{width: .5rem;}
+.winningRecord ul li{width:calc(100% / 3);height:7rem;float:left;border-right:1px solid #ccc;border-bottom:1px solid #ccc;}
+.winningRecord ul li:nth-child(3n){border-right:0;}
+.winningRecord ul li a{display:block;padding-top: 15%;}
+.winningRecord ul li a img{display: block;width: 70%;margin: auto;}
+.winningRecord ul li a span{font: .8rem/3 'Microsoft YaHei';}
+.winningRecord ul li .pup{position:fixed;width:90%;height:84%;padding:1rem 2%;top:50%;left:50%;z-index:1;background:rgba(0,0,0,.5);transform: translate(-50%,-50%);margin-top: 0 !important;}
+.winningRecord ul li .pup p{ position:relative; width:100%; height:100%; font-size:.8rem;color:#fff;line-height:1.5rem;margin-top:2.5rem;cursor:pointer;text-align:left;}
+.winningRecord ul li .pup > img{display:block;width:50%;height:auto;margin:2rem auto 0;}
+.winningRecord ul li .pup .close{width:2rem;height:2rem;float:right;overflow:hidden;}
+.winningRecord ul li .pup .close > img{width:100%;height:100%;float:right;overflow:hidden;}
+
+
+
+.guessRecord{background-color: #fff;border-radius: 5px;width: 90%;margin: 1rem auto .5rem;padding-bottom: 1.2rem;}
+.guessRecord .title{text-align: center;font: 1rem/3 'Microsoft YaHei';color: #e5061a;}
+.guessRecord .list{height: 16.6rem;overflow-y: scroll;}
+.guessRecord .list::-webkit-scrollbar{width: .5rem;}
+.guessRecord .item{border-bottom: 1px solid #ebebeb;}
+.guessRecord .item .time{border-bottom: 1px solid #ebebeb;padding: 0 2.5%;font: .9rem/3 'Microsoft YaHei';}
+.guessRecord .item .result{padding: .8rem 0.5rem;background: url("../images/icon_vs.png") no-repeat 49%/auto 50%;position: relative;}
+.guessRecord .item .result .state{ text-align:center; padding:0.8rem 0.5rem 0.3rem 0.5rem; width:34%;}
+.guessRecord .item .result .state.choice{ background:#ffd300;}
+.guessRecord .item .result .state img{display: block;width: 4rem;height: 4rem; margin:auto;}
+.guessRecord .item .result .state span{font: .9rem/2rem 'Microsoft YaHei'; display:block;}
+.guessRecord .item .result .win{position: absolute;top: 0;font: 1rem/5.6rem 'Microsoft YaHei';color: #e5061a;}
+.guessRecord .item .result .win-l{left: 5%;}
+.guessRecord .item .result .win-r{right: 5%;}
+
+.pop_ups{width:92%;height:auto;padding:1rem;background:#fff;position:absolute;top:10rem;left:50%;transform:translateX(-50%);border:1px solid #333;}
+.pop_ups{font-size:1rem;color:#333;line-height:1.5rem;}
+.pop_ups h6{font-size:1.2rem;color:#333;text-align:center;margin:2rem 0 1rem;}
+.pop_ups input[type=text]{width:80%;height:2rem;padding-left:.5rem;line-height:2rem;margin-top:.5rem;border:1px solid #999;}
+.pop_ups input[type=button]{width:50%;height:2rem;margin:1rem auto 0;display:block;background:#ffe100;border:none;box-shadow:2px 2px 2px #333;border-radius:3px;font-size:1rem;}
+.pop_ups a{position:absolute;top:1rem;right:1rem;width:1rem;height:1rem;}
+.pop_ups a img{width:100%;height:100%;}

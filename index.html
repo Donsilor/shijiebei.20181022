@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform "/>
+    <title>卡卡买世界杯竞猜</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div class="bk">
+    <img src="images/logo.png" alt="" class="logo">
+
+    <div class="title"><img src="images/index_img_1.png" alt=""></div>
+
+    <div class="title_2"><img src="images/index_img_23.png" alt=""></div>
+
+    <div class="clf btns">
+        <a href="ss.html" class="lf">立即竞猜</a>
+    </div>
+
+    <!--活动规则-->
+    <div class="rule">
+        <div class="r_title">
+            <img src="images/title_intro.png" alt="">
+        </div>
+        <div class="content">            
+            <p>1、截至到2018年7月16日16:00，排行榜积分最高者（分数相同，按时间最早的为第一），赢取华为mate10手机+神秘礼包1份。</p>
+            <p>2、积分同时可以在【积分兑换】页面兑换相对应的奖品。</p>
+            <p>3、每天在【赚取积分】页面签到、分享，可各获得50积分。</p>
+            <p>4、【赚取积分】页面，邀请好友参与，可获得积分，邀请越多，分值越高。</p>
+            <p>5、活动期间，通过公众号【卡卡买车友会】，购买任意商品，都按1:10（1元=10积分），换算，于24小时内计算入榜。</p>
+            <p>6、每天可以竞猜当天比赛，每次竞猜消耗100积分，猜对赢取积分，猜对减去积分，总决赛的下注积分为100的倍数，无上限，奖励按照100倍数累计或减少。</p>
+            <p>7、2018年7月20日所有奖品兑换入口关闭，奖品安排发放，活动正式结束。</p>
+            <p>8、本次比赛最终解释权归上海宝淘汽车用品有限公司所有。</p>      
+        </div>
+    </div>
+
+    <div class="fixedMenu">
+        <a href="ss.html" class="icon_1">赛事竞猜</a>
+        <a href="userCenter.html" class="icon_4">赚取积分</a>
+        <a href="luckyDraw.html" class="icon_2">积分兑换</a>
+        <a href="ranking.html" class="icon_3">排行榜</a>
+        
+    </div>
+
+</div>
+
+
+</body>
+<script src="https://cdn.bootcss.com/qs/6.5.1/qs.min.js"></script>
+<script src="js/jquery-1.8.0.min.js"></script>
+<script src="js/common.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script>
+    $(function () {
+        const user = JSON.parse(getCookie("userdata"));
+        const hh_id = getCookie("hh_id");
+        console.log(user)
+        if (hh_id == undefined || hh_id == null || hh_id == "") {
+            wxLogin()
+        } else {
+            $.ajax({
+                type: "GET", //提交方式
+                url: getUrl("/users/" + hh_id),
+                data: {},
+                success: function (data, status) {//返回数据根据结果进行相应的处理
+                    if (data !== undefined) {
+                        setCookie("userdata", JSON.stringify(data));
+			location.href = "ss.html"
+                    } else {
+                        console.log(data)
+                    }
+                },
+                error: function (e) {
+                    console.log('error', e);
+                    if (e.status == 404) {
+                        wxLogin()
+                    } else {
+                        alert("网络错误:" + e.statusText)
+                    }
+                }
+            });
+        }
+    })
+
+    function wxLogin() {
+        const HOME_PAGE = 'http://ceibs.54jj.cn/shijiebei/ss.html' //window.location.href
+        const params = {
+            appid: "wx34cd993710628c13",
+            redirect_uri: getUrl('/auth?callback=' + HOME_PAGE + "&agent=" + getQueryString("agent")),
+            response_type: 'code',
+            scope: 'snsapi_userinfo',
+            state: '1',
+        };
+        window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?' + Qs.stringify(params) + '#wechat_redirect';
+    }
+</script>
+<script>
+    $.ajax({
+        url: getUrl("/sign?url=" + window.location.href),
+        type: "get",
+        dataType: "json",
+        async: false,
+        success: function (data) {
+            console.log(data);
+            var appIdVal = data.appId;
+            var timestampVal = data.timestamp;
+            var nonceStrVal = data.nonceStr;
+            var signatureVal = encodeURIComponent(data.signature);
+            wx.config({
+                debug: false,
+                // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                appId: appIdVal,
+                // 必填，公众号的唯一标识
+                timestamp: timestampVal,
+                // 必填，生成签名的时间戳
+                nonceStr: nonceStrVal,
+                // 必填，生成签名的随机串
+                signature: signatureVal,
+                // 必填，签名
+                jsApiList: [
+                    'onMenuShareAppMessage',//分享给好友
+                    'onMenuShareTimeline',//分享到朋友圈
+                    'onMenuShareQQ',//分享到QQ好友
+                    'onMenuShareWeibo',//分享到微博
+                    'onMenuShareQZone'//分享QQ空间
+                ] // 必填，需要使用的JS接口列表
+            });
+        },
+        error: function () {
+            alert("您好，服务器繁忙中，请稍后重试  ");
+        }
+    })
+    const hh_id = getCookie("hh_id");
+    wx.ready(function () {
+        var shareTitle = "竞猜世界杯胜负，赢华为Mate10手机";
+        var shareDesc = "这次你不要再去朋友圈“跳楼”了";
+        // var linkUrl="http://ceibs.54jj.cn/zhongou/index.html";
+        var linkUrl = "http://ceibs.54jj.cn/shijiebei/index.html?agent=A" + hh_id;
+        var imgUrl = "http://ceibs.54jj.cn/shijiebei/images/sharelogo.jpg";
+
+        // 分享给微信好友
+        wx.onMenuShareAppMessage({
+            title: shareTitle,
+            // 分享标题
+            desc: shareDesc,
+            // 分享描述
+            link: linkUrl,
+            // 分享链接
+            imgUrl: imgUrl,
+            // 分享图标
+            type: 'link',
+            // 分享类型,music、video或link，不填默认为link
+            dataUrl: '',
+            // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () {
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+
+        // 分享到朋友圈
+        wx.onMenuShareTimeline({
+            title: shareTitle,
+            // 分享标题
+            desc: shareDesc,
+            // 分享描述
+            link: linkUrl,
+            // 分享链接
+            imgUrl: imgUrl,
+            // 分享图标
+            type: 'link',
+            // 分享类型,music、video或link，不填默认为link
+            dataUrl: '',
+            // 如果type是music或video，则要提供数据链接，默认为空
+            success: function (res) {
+            },
+            cancel: function (res) {
+                // 用户取消分享后执行的回调函数
+            },
+            fail: function (res) {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+        wx.error(function (res) {
+            // config信息验证失败会执行error函数，如签名过期导致验证失败
+        });
+    });
+</script>
+</html>
